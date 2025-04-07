@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aarzoo ❤️</title>
+    <style>
+        :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #ffccd5;
+            --background-color: #fff9fb;
+            --text-color: #333;
+            --shadow-color: rgba(255, 107, 157, 0.4);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px var(--shadow-color);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px var(--shadow-color);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 1s ease;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            margin-bottom: 20px;
+        }
+
+        #birthday-section {
+            display: block;
+        }
+
+        .heart {
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .proposal-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        #yes-btn {
+            background-color: #ff4081;
+        }
+
+        #no-btn {
+            background-color: #9e9e9e;
+        }
+
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: var(--primary-color);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .shayari {
+            font-style: italic;
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin: 0 5px;
+        }
+
+        /* Decorations */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 24px;
+            color: var(--primary-color);
+            animation: floatHeart 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-20vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .balloon {
+            display: inline-block;
+            margin: 10px;
+            animation: float 3s ease-in-out infinite alternate;
+            font-size: 32px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+
+        /* For different floating speeds */
+        .balloon:nth-child(2n) { animation-duration: 3.5s; }
+        .balloon:nth-child(3n) { animation-duration: 4s; }
+        .balloon:nth-child(4n) { animation-duration: 4.5s; }
+        
+        #response-display {
+            font-size: 24px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            background-color: var(--secondary-color);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts-container"></div>
+
+    <div class="container">
+        <!-- Birthday Section -->
+        <section class="section" id="birthday-section">
+            <div class="balloon">🎈</div>
+            <div class="balloon">🎂</div>
+            <div class="balloon">🎁</div>
+            <div class="balloon">🎊</div>
+            
+            <h1>Happy Birthday Aarzoo! <span class="emoji">🎂</span><span class="emoji">🎉</span></h1>
+            
+            <p>
+                Today is a special day because it's the birthday of the most amazing person in my life! 
+                <span class="emoji">💖</span> You fill my days with joy and my heart with love.
+                <span class="emoji">😘</span>
+            </p>
+            
+            <p>
+                On this special day, I want to celebrate you and all the happiness you bring into my world.
+                <span class="emoji">🌟</span>
+            </p>
+            
+            <div class="shayari">
+                "Har pal mein khushiyan hon teri, har din mein muskan ho teri,
+                <br>Duaon mein maangta hun yehi, har saal se khoobsurat ho ye saal tera."
+                <span class="emoji">💖</span>
+            </div>
+            
+            <button class="btn" id="to-blessings-btn">Next <span class="emoji">💝</span></button>
+        </section>
+
+        <!-- Blessings Section -->
+        <section class="section" id="blessings-section">
+            <h2>My Heartfelt Blessings <span class="emoji">✨</span></h2>
+            
+            <p>
+                May your day be as beautiful as your smile and as lovely as your heart.
+                <span class="emoji">💕</span>
+            </p>
+            
+            <p>
+                I pray that this year brings you unlimited happiness, countless moments of joy, and all the success you deserve.
+                <span class="emoji">🙏</span><span class="emoji">✨</span>
+            </p>
+            
+            <div class="shayari">
+                "Khushiyon se bhara ho aapka har pal, zindagi mein kabhi na aaye koi hal-chal,
+                <br>Dua hai ki aapki har khwahish puri ho, aur aapko mile khushiyon ka har pal."
+                <span class="emoji">🌹</span>
+            </div>
+            
+            <p>
+                May God bless you with strength to achieve all your goals, wisdom to reach your highest potential, and love to fill your heart throughout the year.
+                <span class="emoji">🌈</span>
+            </p>
+            
+            <button class="btn" id="to-romantic-btn">More <span class="emoji">💖</span></button>
+        </section>
+
+        <!-- Romantic Messages Section -->
+        <section class="section" id="romantic-section">
+            <h2>My Love For You <span class="emoji">❤️</span></h2>
+            
+            <p>
+                Every moment spent with you feels like a beautiful dream I never want to wake up from.
+                <span class="emoji">😘</span><span class="emoji">💗</span>
+            </p>
+            
+            <p>
+                Your smile brightens my darkest days, and your love gives me strength I never knew I had.
+                <span class="emoji">💖</span>
+            </p>
+            
+            <div class="shayari">
+                "Tere pyaar mein mujhe jeena aa gaya, tujhse milkar mujhe jeene ka mazaa aa gaya,
+                <br>Tu hai to duniya haseen lagti hai, tere bina to jeena bhi bekar lagta hai."
+                <span class="emoji">💘</span>
+            </div>
+            
+            <p>
+                You are not just my girlfriend, but my best friend, my confidant, and the love of my life.
+                <span class="emoji">💋</span><span class="emoji">💞</span>
+            </p>
+            
+            <div class="shayari">
+                "Chaand sitaron se bhi khoobsurat hai tera chehra, teri aankhon mein hai kuch aisa jadoo sa,
+                <br>Teri ek muskurahat par main haar jaata hoon, tere pyaar mein dooba rehna chahta hoon."
+                <span class="emoji">💝</span>
+            </div>
+            
+            <p>
+                I cherish every laugh we share, every tear we've wiped away, and every memory we've created together.
+                <span class="emoji">💓</span><span class="emoji">😍</span>
+            </p>
+            
+            <button class="btn" id="to-proposal-btn">Special Surprise <span class="emoji">💎</span></button>
+        </section>
+
+        <!-- Proposal Section -->
+        <section class="section" id="proposal-section">
+            <h2>A Question From My Heart <span class="emoji">💍</span></h2>
+            
+            <p>
+                Aarzoo, since the day you came into my life, everything has changed for the better.
+                <span class="emoji">✨</span>
+            </p>
+            
+            <p>
+                You've shown me what true love feels like, and I can't imagine my future without you in it.
+                <span class="emoji">💑</span>
+            </p>
+            
+            <div class="shayari">
+                "Tere saath bitaaye har lamhe ko sambhal kar rakhta hoon,
+                <br>Tere har muskan ko dil mein basakar rakhta hoon,
+                <br>Tu hai meri zindagi ka sabse khoobsurat ehsaas,
+                <br>Teri mohabbat ko apni saanse banakar rakhta hoon."
+                <span class="emoji">❤️</span>
+            </div>
+            
+            <p class="proposal-text">
+                <strong>Will you be mine forever? <span class="emoji">💍</span><span class="emoji">💝</span></strong>
+            </p>
+            
+            <div class="proposal-btns">
+                <button class="btn" id="yes-btn">Yes, I Will! <span class="emoji">❤️</span></button>
+                <button class="btn" id="no-btn">No <span class="emoji">💔</span></button>
+            </div>
+            
+            <div id="response-display"></div>
+        </section>
+
+        <!-- Answer Section -->
+        <section class="section" id="answer-section">
+            <h2>Thank You For Saying Yes! <span class="emoji">💍</span></h2>
+            
+            <p>
+                You've made me the happiest person alive! <span class="emoji">😍</span><span class="emoji">💖</span>
+            </p>
+            
+            <p>
+                I promise to cherish you, respect you, and love you with all my heart for as long as I live.
+                <span class="emoji">💑</span><span class="emoji">💏</span>
+            </p>
+            
+            <div class="shayari">
+                "Tera haan kehna mere liye sabse khoobsurat tohfa hai,
+                <br>Tere saath jeene ka safar meri zindagi ka maksad hai,
+                <br>Tujhse milna kismat thi, tujhe paana naseeb hai,
+                <br>Tere saath rehna ab meri zindagi ka sabse haseen khwab hai."
+                <span class="emoji">💖</span>
+            </div>
+            
+            <p>
+                Let's create a beautiful life together filled with love, laughter, and endless memories.
+                <span class="emoji">🌈</span><span class="emoji">💋</span>
+            </p>
+            
+            <p>
+                I love you more than words can express, Aarzoo!
+                <span class="emoji">❤️</span><span class="emoji">💘</span><span class="emoji">💗</span>
+            </p>
+        </section>
+    </div>
+
+    <script>
+        // Create floating hearts background
+        const heartsContainer = document.getElementById('hearts-container');
+        
+        function createFloatingHearts() {
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-float');
+                heart.innerHTML = ['❤️', '💕', '💖', '💗', '💓', '💘', '💝'][Math.floor(Math.random() * 7)];
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        createFloatingHearts();
+        
+        // Navigation between sections
+        const toNextButtons = {
+            'to-blessings-btn': 'blessings-section',
+            'to-romantic-btn': 'romantic-section',
+            'to-proposal-btn': 'proposal-section'
+        };
+        
+        Object.keys(toNextButtons).forEach(btnId => {
+            document.getElementById(btnId).addEventListener('click', () => {
+                // Hide all sections
+                document.querySelectorAll('.section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show the target section
+                document.getElementById(toNextButtons[btnId]).style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Handle proposal response
+        document.getElementById('yes-btn').addEventListener('click', () => {
+            const responseDisplay = document.getElementById('response-display');
+            responseDisplay.textContent = "She said YES! 💖 on " + new Date().toLocaleString();
+            responseDisplay.style.backgroundColor = "#ffcce6";
+            responseDisplay.style.display = "block";
+            
+            // Hide proposal section after a delay
+            setTimeout(() => {
+                document.getElementById('proposal-section').style.display = 'none';
+                document.getElementById('answer-section').style.display = 'block';
+                createFireworks();
+                window.scrollTo(0, 0);
+            }, 2000);
+        });
+        
+        document.getElementById('no-btn').addEventListener('click', () => {
+            const responseDisplay = document.getElementById('response-display');
+            responseDisplay.textContent = "She said NO 💔 on " + new Date().toLocaleString();
+            responseDisplay.style.backgroundColor = "#ffccd5";
+            responseDisplay.style.display = "block";
+            
+            // Move No button when hovered
+            const noBtn = document.getElementById('no-btn');
+            noBtn.style.position = 'relative';
+            
+            noBtn.addEventListener('mouseover', moveNoButton);
+        });
+        
+        // Make the No button run away
+        function moveNoButton() {
+            const noBtn = document.getElementById('no-btn');
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            const maxX = window.innerWidth - btnWidth;
+            const maxY = window.innerHeight - btnHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        }
+        
+        // Create fireworks animation
+        function createFireworks() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.classList.add('firework');
+                    
+                    // Random position
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    
+                    // Random color
+                    const colors = ['#ff4081', '#ff80ab', '#f48fb1', '#ec407a', '#e91e63', '#d81b60', '#c2185b'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    firework.style.left = `${x}px`;
+                    firework.style.top = `${y}px`;
+                    firework.style.backgroundColor = color;
+                    firework.style.boxShadow = `0 0 10px 2px ${color}`;
+                    
+                    document.body.appendChild(firework);
+                    
+                    // Remove firework after animation
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 1000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
